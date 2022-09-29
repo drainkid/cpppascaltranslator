@@ -1,1 +1,1 @@
-#ы
+#cpp to pascal translator
