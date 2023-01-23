@@ -1,9 +1,6 @@
-from Lexer.LexicalAnalyzer import *
 from Parser.GrammarParser import *
 from CodeGenerator.Generator import *
 from Semantic_Analyzer.SemanticAnalyzer import *
-
-
 
 if __name__ == '__main__':
     # print("-" * 10, "Lexer", "-" * 10)
@@ -14,7 +11,7 @@ if __name__ == '__main__':
 
     print()
     if lexicalAnalyzerResult:
-        print("-"*10, "Grammar", "-"*10)
+        print("-" * 10, "Grammar", "-" * 10)
 
         grammarParser = GrammarParser()
         grammarParser.parseJsonRules('grammar.json')
