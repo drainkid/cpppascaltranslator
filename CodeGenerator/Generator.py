@@ -201,7 +201,7 @@ class Generator(object):
         return result
 
     def __parseMain(self, treeNode, parentNode):
-        result = FuncNode(parentNode, 'main', returnType='void')
+        result = FuncNode(parentNode, 'main', returnType='int')
         result.addBody(self.__parse(treeNode.children[0], result))
         return result
 
@@ -409,6 +409,7 @@ class Generator(object):
 
         return result
 
+    # тело программы (main)
     def __generateFunc(self, node, level):
         result = INDENT * level
 

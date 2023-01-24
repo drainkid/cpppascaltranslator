@@ -1,20 +1,21 @@
 #include iostream
 
-
-int zalupa(int a , int b , int piska , int huyna) {
-a = 5;
-b = 0;
-if (a > 5) {
-piska = 7;
+int test (int g) {
+g = 1;
+while (g < 20) {
+g = g + 1;
 }
-else {
-huyna = 9;
+for (int i = 1 ; i < 12 ; i = i + 1) {
+g = g + 2;
 }
-return piska;
+return g;
 }
 
 
-void main()
+int main()
 {
-std :: cin >> gg;
+return;
+double fff = 1.4;
+int bb = 453;
+test(1);
 }

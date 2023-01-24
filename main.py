@@ -1,45 +1,44 @@
+from Lexer.LexicalAnalyzer import *
 from Parser.GrammarParser import *
 from CodeGenerator.Generator import *
 from Semantic_Analyzer.SemanticAnalyzer import *
 
-if __name__ == '__main__':
-    # print("-" * 10, "Lexer", "-" * 10)
 
-    lexicalAnalyzer = LexicalAnalyzer('test.cpp')
-    lexicalAnalyzerResult = lexicalAnalyzer.startParsing()
-    # lexicalAnalyzer.printLexemes()
 
-    print()
-    if lexicalAnalyzerResult:
-        print("-" * 10, "Grammar", "-" * 10)
+#     # print("-" * 10, "Lexer", "-" * 10)
 
-        grammarParser = GrammarParser()
-        grammarParser.parseJsonRules('grammar.json')
-        # grammarParser.printRules()
+lexicalAnalyzer = LexicalAnalyzer('test.cpp')
+lexicalAnalyzerResult = lexicalAnalyzer.startParsing()
+# lexicalAnalyzer.printLexemes()
 
-        earley = Earley(grammarParser.rules, "<программа>")
+print()
+if lexicalAnalyzerResult:
+    # print("-"*10, "Grammar", "-"*10)
 
-        earleyParseResult = earley.parse(lexicalAnalyzer.lexemeArray)
-        earley.printTableToFile()
-        earley.printError()
-        earleyTable = earley.table
+    grammarParser = GrammarParser()
+    grammarParser.parseJsonRules('grammar.json')
+    # grammarParser.printRules()
 
-        # exit(-1)
+    earley = Earley(grammarParser.rules, "<программа>")
 
-        if earleyParseResult:
-            treeBuilder = TreeBuilder(earleyTable, grammarParser.rules)
-            treeBuilder.buildTree()
-            treeBuilder.printTreeToFile()
+    earleyParseResult = earley.parse(lexicalAnalyzer.lexemeArray)
+    earley.printTableToFile()
+    earley.printError()
+    earleyTable = earley.table
 
-            variableStorage = VariableStorage()
-            semanticAnalyser = VariableSemanticAnalyser(treeBuilder.tree)
-            semanticAnalyser.parse(treeBuilder.tree, variableStorage)
+    # exit(-1)
 
-            generator = Generator(treeBuilder.tree)
-            generator.generate()
-            print(generator.resultCode)
+    if earleyParseResult:
+        treeBuilder = TreeBuilder(earleyTable, grammarParser.rules)
+        treeBuilder.buildTree()
+        treeBuilder.printTreeToFile()
 
-            # optimizer = Optimizer(treeBuilder.tree, grammarParser.rules)
-            # optimizer.optimize()
+        generator = Generator(treeBuilder.tree)
+        generator.generate()
+        print(generator.resultCode)
+
+        variableStorage = VariableStorage()
+        semanticAnalyser = VariableSemanticAnalyser(treeBuilder.tree)
+        semanticAnalyser.parse(treeBuilder.tree, variableStorage)
 
     print()
