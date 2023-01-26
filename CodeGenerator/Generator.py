@@ -1,6 +1,3 @@
-from abc import ABC, abstractmethod
-from enum import Enum
-
 INDENT = " " * 4
 Types = {
     'bool': 'boolean',
@@ -388,7 +385,6 @@ class Generator(object):
 
 
     def __generateFor(self, node, level):
-        # result = self.__generateVar(node.firstExpr, level) + ';\n'
         result = INDENT * level + 'while (' + str(node.secondExpr) + ') do\n'
 
         for item in node.body:
@@ -409,7 +405,6 @@ class Generator(object):
 
         return result
 
-    # тело программы (main)
     def __generateFunc(self, node, level):
         result = INDENT * level
 
@@ -458,8 +453,6 @@ class Generator(object):
             return self.__generateFunc(node, level)
         elif isinstance(node, VarNode):
             return self.__generateVar(node, level) + ';\n'
-        # elif isinstance(node, ExpressionNode):
-        #     return self.__generateExpression(node, level)
         elif isinstance(node, ForNode):
             return self.__generateFor(node, level)
         elif isinstance(node, FuncNode):

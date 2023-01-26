@@ -106,5 +106,3 @@ class GrammarParser:
                             else:
                                 prodAccum.add(elem)
                     workingRule.add(prodAccum)
-
-

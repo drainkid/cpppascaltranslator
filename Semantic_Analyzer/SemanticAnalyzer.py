@@ -161,7 +161,8 @@ class VariableSemanticAnalyser:
                 elif len(returnExpression) == 0:
                     print(SemanticError(node.lexeme.lineNumber, '', ErrorTypeSemantic.EXPRESSION_MULTIPLE_TYPES.value))
                 else:
-                    print(SemanticError(node.lexeme.lineNumber, newFunction.type_v + '!=' + str(returnExpression[0]), ErrorTypeSemantic.FUNCTION_TYPE_MISMATCH.value))
+                    print(SemanticError(node.lexeme.lineNumber, newFunction.type_v + '!=' + str(returnExpression[0]),
+                                        ErrorTypeSemantic.FUNCTION_TYPE_MISMATCH.value))
 
     def parseExpression(self, expression, scope: VariableStorage):
         if expression.rule.name == '<алгебраическое выражение>':
@@ -182,12 +183,14 @@ class VariableSemanticAnalyser:
                     exp_type = None
                 return [exp_type]
         if expression.rule.name == '<булево выражение>':
-            if scope.getVariable(expression.children[0].children[0].children[0].lexeme.lexeme, scope) is None: # позырить
-                print('semantic error occured im done')
-                exit()
+            if scope.getVariable(expression.children[0].children[0].children[0].lexeme.lexeme,
+                                 scope) is None:  # позырить
+                scope = scope.children
+                return scope
             if expression.children[0].children[0].children[0].rule.name == '<имя переменной>' and len(
                     expression.children[0].children) == 1:
-                return [scope.getVariable(expression.children[0].children[0].children[0].lexeme.lexeme, scope).type_v] #позырить
+                return [scope.getVariable(expression.children[0].children[0].children[0].lexeme.lexeme,
+                                          scope).type_v]
             if 'целое число' in expression.children[0].children[0].children[0].children[0].rule.name and len(
                     expression.children[0].children) == 1:
                 return ['int']
@@ -207,7 +210,8 @@ class VariableSemanticAnalyser:
             if scope.getVariable(operand.children[0].lexeme.lexeme, scope):
                 return scope.getVariable(operand.children[0].lexeme.lexeme, scope).type_v
             else:
-                print(SemanticError(operand.lexeme.lineNumber, operand.lexeme.lexeme, ErrorTypeSemantic.UNDECLARED_VARIABLE.value))
+                print(SemanticError(operand.lexeme.lineNumber, operand.lexeme.lexeme,
+                                    ErrorTypeSemantic.UNDECLARED_VARIABLE.value))
                 return None
         elif operand.children[0].rule.name == '<вызов функции>':
             for func in self.functions:
@@ -241,7 +245,7 @@ class VariableSemanticAnalyser:
         else:
             return 'int'
 
-    def parse(self, node, scope: VariableStorage, func=False):
+    def parse(self, node, scope: VariableStorage):
         newScope = scope
         if node.rule.name == '<инициализация переменной>':
             self.addVariable(node, scope)
@@ -251,9 +255,6 @@ class VariableSemanticAnalyser:
             newScope = scope.addChildren()
         if node.rule.name == '<цикл while>':
             newScope = scope.addChildren()
-        # if node.rule.name == '<объявление функции>':
-        #     newScope = scope.addChildren()
-        #     self.addFunction(node, newScope)
         if node.rule.name == '<главная функция>':
             newScope = scope.addChildren()
         if node.children:

@@ -1,23 +1,15 @@
-from Lexer.LexicalAnalyzer import *
 from Parser.GrammarParser import *
 from CodeGenerator.Generator import *
 from Semantic_Analyzer.SemanticAnalyzer import *
 
-
-
-#     # print("-" * 10, "Lexer", "-" * 10)
-
 lexicalAnalyzer = LexicalAnalyzer('test.cpp')
 lexicalAnalyzerResult = lexicalAnalyzer.startParsing()
-# lexicalAnalyzer.printLexemes()
 
 print()
 if lexicalAnalyzerResult:
-    # print("-"*10, "Grammar", "-"*10)
 
     grammarParser = GrammarParser()
     grammarParser.parseJsonRules('grammar.json')
-    # grammarParser.printRules()
 
     earley = Earley(grammarParser.rules, "<программа>")
 
@@ -25,8 +17,6 @@ if lexicalAnalyzerResult:
     earley.printTableToFile()
     earley.printError()
     earleyTable = earley.table
-
-    # exit(-1)
 
     if earleyParseResult:
         treeBuilder = TreeBuilder(earleyTable, grammarParser.rules)

@@ -1,5 +1,4 @@
 import re
-
 from Lexer.LexemeType import LexemeType
 from Lexer.LexicalAnalyzer import LexicalAnalyzer
 
@@ -279,7 +278,7 @@ class Earley:
 
     def printError(self):
         if self.semanticError is None:
-            pass # позырить
+            pass  # позырить
         else:
             print(self.semanticError)
 
@@ -310,7 +309,8 @@ class Earley:
         else:
             i = 0
             for col in self.table:
-                file.write(HORIZONTAL_SYMBOL * 10 + " E_{0} - token: {1} ".format(i, col.token) + HORIZONTAL_SYMBOL * 10 + "\n")
+                file.write(HORIZONTAL_SYMBOL * 10 + " E_{0} - token: {1} ".format(i,
+                                                                                  col.token) + HORIZONTAL_SYMBOL * 10 + "\n")
                 for state in col.states:
                     file.write(str(state).ljust(len(str(state))) + "\n")
                 i += 1
@@ -333,6 +333,9 @@ class TreeBuilder:
         else:
             raise ValueError("Invalid earley table")
 
+    def get_tree(self):
+        return self.tree
+
     def buildTreeHelper(self, state, j):
         terms = state.production
         k = len(terms) - 1
@@ -350,9 +353,6 @@ class TreeBuilder:
             else:
                 k -= 1
                 c -= 1
-
-        # if len(result.children) != 0:
-        #     result.lexeme = None
 
         return result
 
