@@ -14,7 +14,6 @@ return g;
 
 void main()
 {
-a = 5;
 return;
 double fff = 1.4;
 int bb = 453;
