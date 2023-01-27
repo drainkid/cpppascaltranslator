@@ -162,7 +162,3 @@ class LexerTests(unittest.TestCase):
 
     def test_lexeme_type_colon(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(51), 'COLON')
-
-
-if __name__ == '__main__':
-    unittest.main()
