@@ -1,8 +1,8 @@
 ### Как развернуть проект локально
 
-1. docker pull matbeyc/python_cpp_translator
-2. docker run matbeyc/python_cpp_translator
-
+1. docker build . -t {name}
+2. docker run {name}
+3. Входной код меняется в test.cpp
 
 ### Состав команды:
 
