@@ -1,13 +1,10 @@
 import unittest
 from Lexer.LexicalAnalyzer import LexicalAnalyzer
-from Parser.Earley import TreeBuilder, Earley
-from Parser.GrammarParser import GrammarParser
-from Semantic_Analyzer.SemanticAnalyzer import VariableSemanticAnalyser
 
 
 class LexerTests(unittest.TestCase):
     def setUp(self):
-        self.lexicalAnalyzer = LexicalAnalyzer('lexerUnitTestFile.cpp')
+        self.lexicalAnalyzer = LexicalAnalyzer('./UnitTests/test_data/lexer_unit_test_file.cpp')
         self.lexicalAnalyzer.startParsing()
 
     def test_LexemeType_Plus(self):
@@ -165,19 +162,6 @@ class LexerTests(unittest.TestCase):
 
     def test_LexemeType_Colon(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(51), 'COLON')
-
-
-class GrammarTests(unittest.TestCase):
-
-    def setUp(self):
-        self.grammar_parser = GrammarParser()
-        self.grammar_parser.parseJsonRules('../grammar.json')
-
-    def test_search_body_function_rule(self):
-        self.assertEqual(self.grammar_parser.searchRule('<тело функции>'), '<тело функции>')
-
-    def test_search_empty_rule(self):
-        self.assertEqual(self.grammar_parser.searchRule(''), None)
 
 
 if __name__ == '__main__':
