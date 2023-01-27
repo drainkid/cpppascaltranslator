@@ -100,7 +100,7 @@
   {
     "ruleName": "<подключение библиотеки>",
     "productions": [
-      ["reg{^#include$}",  "reg{^iostream|cmath$}"]
+      ["reg{^#include$}",  "reg{^<iostream|cmath>$}"]
     ]
   },
   {

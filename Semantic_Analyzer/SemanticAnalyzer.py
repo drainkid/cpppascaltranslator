@@ -183,10 +183,6 @@ class VariableSemanticAnalyser:
                     exp_type = None
                 return [exp_type]
         if expression.rule.name == '<булево выражение>':
-            if scope.getVariable(expression.children[0].children[0].children[0].lexeme.lexeme,
-                                 scope) is None:  # позырить
-                scope = scope.children
-                return scope
             if expression.children[0].children[0].children[0].rule.name == '<имя переменной>' and len(
                     expression.children[0].children) == 1:
                 return [scope.getVariable(expression.children[0].children[0].children[0].lexeme.lexeme,
