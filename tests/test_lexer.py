@@ -4,163 +4,163 @@ from Lexer.LexicalAnalyzer import LexicalAnalyzer
 
 class LexerTests(unittest.TestCase):
     def setUp(self):
-        self.lexicalAnalyzer = LexicalAnalyzer('./UnitTests/test_data/lexer_unit_test_file.cpp')
+        self.lexicalAnalyzer = LexicalAnalyzer('./tests/test_data/lexer_unit_test_file.cpp')
         self.lexicalAnalyzer.startParsing()
 
-    def test_LexemeType_Plus(self):
+    def test_lexeme_type_plus(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(0), 'PLUS')
 
-    def test_LexemeType_Increment(self):
+    def test_lexeme_type_increment(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(1), 'INCREMENT')
 
-    def test_LexemeType_Minus(self):
+    def test_lexeme_type_minus(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(2), 'MINUS')
 
-    def test_LexemeType_Decrement(self):
+    def test_lexeme_type_decrement(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(3), 'DECREMENT')
 
-    def test_LexemeType_Multiplication(self):
+    def test_lexeme_type_multiplication(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(4), 'MULTIPLICATION')
 
-    def test_LexemeType_Division(self):
+    def test_lexeme_type_division(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(5), 'DIVISION')
 
-    def test_LexemeType_Mod(self):
+    def test_lexeme_type_mod(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(6), 'MOD')
 
-    def test_LexemeType_Assignment(self):
+    def test_lexeme_type_assignment(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(7), 'ASSIGNMENT')
 
-    def test_LexemeType_Equal(self):
+    def test_lexeme_type_equal(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(8), 'EQUAL')
 
-    def test_LexemeType_NotEqual(self):
+    def test_lexeme_type_not_equal(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(9), 'NOT_EQUAL')
 
-    def test_LexemeType_LessThan(self):
+    def test_lexeme_type_less_than(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(10), 'LESS_THAN')
 
-    def test_LexemeType_MoreThan(self):
+    def test_lexeme_type_more_than(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(11), 'MORE_THAN')
 
-    def test_LexemeType_LessOrEqual(self):
+    def test_lexeme_type_less_or_equal(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(12), 'LESS_OR_EQUAL')
 
-    def test_LexemeType_MoreOrEqual(self):
+    def test_lexeme_type_more_or_equal(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(13), 'MORE_OR_EQUAL')
 
-    def test_LexemeType_Not(self):
+    def test_lexeme_type_not(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(14), 'NOT')
 
-    def test_LexemeType_And(self):
+    def test_lexeme_type_and(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(15), 'AND')
 
-    def test_LexemeType_Or(self):
+    def test_lexeme_type_or(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(16), 'OR')
 
-    def test_LexemeType_Void(self):
+    def test_lexeme_type_void(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(17), 'VOID')
 
-    def test_LexemeType_Int(self):
+    def test_lexeme_type_int(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(18), 'INT')
 
-    def test_LexemeType_Long(self):
+    def test_lexeme_type_long(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(19), 'LONG')
 
-    def test_LexemeType_Short(self):
+    def test_lexeme_type_short(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(20), 'SHORT')
 
-    def test_LexemeType_Unsigned(self):
+    def test_lexeme_type_unsigned(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(21), 'UNSIGNED')
 
-    def test_LexemeType_Bool(self):
+    def test_lexeme_type_bool(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(22), 'BOOL')
 
-    def test_LexemeType_Float(self):
+    def test_lexeme_type_float(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(23), 'FLOAT')
 
-    def test_LexemeType_Double(self):
+    def test_lexeme_type_double(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(24), 'DOUBLE')
 
-    def test_LexemeType_Char(self):
+    def test_lexeme_type_Char(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(25), 'CHAR')
 
-    def test_LexemeType_For(self):
+    def test_lexeme_type_for(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(26), 'FOR')
 
-    def test_LexemeType_While(self):
+    def test_lexeme_type_while(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(27), 'WHILE')
 
-    def test_LexemeType_If(self):
+    def test_lexeme_type_if(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(28), 'IF')
 
-    def test_LexemeType_Else(self):
+    def test_lexeme_type_else(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(29), 'ELSE')
 
-    def test_LexemeType_True(self):
+    def test_lexeme_type_true(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(30), 'TRUE')
 
-    def test_LexemeType_False(self):
+    def test_lexeme_type_false(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(31), 'FALSE')
 
-    def test_LexemeType_Include(self):
+    def test_lexeme_type_include(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(32), 'INCLUDE')
 
-    def test_LexemeType_Std(self):
+    def test_lexeme_type_std(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(33), 'STD')
 
-    def test_LexemeType_Main(self):
+    def test_lexeme_type_main(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(34), 'MAIN')
 
-    def test_LexemeType_Return(self):
+    def test_lexeme_type_return(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(35), 'RETURN')
 
-    def test_LexemeType_Cout(self):
+    def test_lexeme_type_cout(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(36), 'COUT')
 
-    def test_LexemeType_Cin(self):
+    def test_lexeme_type_cin(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(37), 'CIN')
 
-    def test_LexemeType_Abs(self):
+    def test_lexeme_type_abs(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(38), 'ABS')
 
-    def test_LexemeType_Sqr(self):
+    def test_lexeme_type_sqr(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(39), 'SQR')
 
-    def test_LexemeType_Sqrt(self):
+    def test_lexeme_type_sqrt(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(40), 'SQRT')
 
-    def test_LexemeType_Pow(self):
+    def test_lexeme_type_pow(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(41), 'POW')
 
-    def test_LexemeType_Floor(self):
+    def test_lexeme_type_floor(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(42), 'FLOOR')
 
-    def test_LexemeType_Ceil(self):
+    def test_lexeme_type_ceil(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(43), 'CEIL')
 
-    def test_LexemeType_RoundOpenBracket(self):
+    def test_lexeme_type_round_open_bracket(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(44), 'ROUND_OPEN_BRACKET')
 
-    def test_LexemeType_RoundCloseBracket(self):
+    def test_lexeme_type_round_close_bracket(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(45), 'ROUND_CLOSE_BRACKET')
 
-    def test_LexemeType_CurlyOpenBracket(self):
+    def test_lexeme_type_curly_open_bracket(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(46), 'CURLY_OPEN_BRACKET')
 
-    def test_LexemeType_CurlyCloseBracket(self):
+    def test_lexeme_type_curly_close_bracket(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(47), 'CURLY_CLOSE_BRACKET')
 
-    def test_LexemeType_SquareOpenBracket(self):
+    def test_lexeme_type_square_open_bracket(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(48), 'SQUARE_OPEN_BRACKET')
 
-    def test_LexemeType_SquareCloseBracket(self):
+    def test_lexeme_type_square_close_bracket(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(49), 'SQUARE_CLOSE_BRACKET')
 
-    def test_LexemeType_SemiColon(self):
+    def test_lexeme_type_semi_colon(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(50), 'SEMICOLON')
 
-    def test_LexemeType_Colon(self):
+    def test_lexeme_type_colon(self):
         self.assertEqual(self.lexicalAnalyzer.returnLexemes(51), 'COLON')
 
 

@@ -283,7 +283,7 @@ class Earley:
             print(self.semanticError)
 
     def printTableToFile(self, tableType="ver"):
-        with open("EarleyTable.txt", "w+", encoding="utf-8") as file:
+        with open("earley_table.txt", "w+", encoding="utf-8") as file:
             self.__printTableToFileHelper(file, tableType)
 
     def __printTableToFileHelper(self, file, tableType="ver"):
