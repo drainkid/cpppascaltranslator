@@ -1,3 +1,3 @@
 cd /app
-python -m unittest discover
+python -m unittest
 python main.py
