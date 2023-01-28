@@ -1,2 +1,2 @@
-python -m unittest discover -v
+python -m unittest discover
 python ./main.py
